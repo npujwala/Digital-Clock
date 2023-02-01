@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Digital Clock</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.navbar{
+       width: 100vw;
+       height: 15vh;
+       color: white;
+       background-color: dimgray;
+       text-transform: transparent;
+       text-align: center;
+       padding-top: 10px;
+       font-weight: 20%;
+       font-family: 'Tangerine', serif;
+  font-size: 48px;
+  text-shadow: 4px 4px 4px #aaa;
+	}
+	.time{
+		background-color: aliceblue;
+		width: 100vw;
+		height: 80vh;
+		padding: 50px;
+		display: flex;
+    	justify-content: center;
+    	align-items: center;
+	}
+    .container{
+    	border-width: 300px;
+    	width: 50vw;
+    	border: 6px solid gold;
+        font-size: 80px;
+    	background-color:blueviolet;
+    	color: floralwhite;
+    	text-align: center;
+    	border-top-left-radius: inherit;
+    	font-weight: 20%;
+  
+    }
+</style>
+<body>
+   <nav class="navbar">
+     <h1>DIGITAL CLOCK</h1>   
+   </nav>
+   <div class="time">
+   <div id="clock" class="container"></div>
+   <script type="text/javascript">
+    function showTime()
+    {
+    	var d=new Date();
+    	var h=d.getHours();
+    	var m=d.getMinutes();
+    	var s=d.getSeconds();
+    	var session="AM";
+    	var a=["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+    	var b=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    	var day=d.getDay();
+    	var date=d.getDate();
+    	var month=d.getMonth();
+    	var year=d.getFullYear();
+    	if(h==0)
+    	{
+    		h=12;
+    	}
+    	if(h>12)
+    	{
+    		h=h-12;
+    		session="PM";
+    	}
+    	h=h<10?"0"+h:h;
+    	m=m<10?"0"+m:m;
+    	s=s<10?"0"+s:s;
+    	document.getElementById('clock').innerHTML=h+":"+m+":"+s+" "+"<br>"+ a[day]+" "+"on"+"<br> "+date+" "+b[month]+" "+year;
+    	setInterval(showTime,1000);
+    }
+      showTime();
+   </script>
+</div>
+ 
+</body>
+</html>
